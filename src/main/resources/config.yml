@@ -1,0 +1,17 @@
+# ColorChat Configuration
+
+# Database settings
+database:
+  # Path to the SQLite database file (relative to the plugin data folder)
+  path: "database.db"
+
+# Command settings
+commands:
+  # Command to generate a new salt for a player
+  salt:
+    # Permission required to use the command
+    permission: "colorchat.salt"
+    # Message sent to the player when a new salt is generated
+    success: "&aYour chat color has been randomized!"
+    # Message sent to the player when they don't have permission
+    no-permission: "&cYou don't have permission to use this command!"

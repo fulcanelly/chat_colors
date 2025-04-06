@@ -4,3 +4,9 @@ main: me.fulcanelly.plugins.color_chat.ColorChatPlugin
 api-version: 1.13
 description: Adds color to player chat messages based on their name
 author: fulcanelly
+
+commands:
+  salt:
+    description: Randomize your chat color
+    usage: /<command>
+    permission: colorchat.salt
