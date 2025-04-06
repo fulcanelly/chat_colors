@@ -9,31 +9,22 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 public class ColorChatPlugin extends JavaPlugin implements Listener {
 
     private ChatColor[] allMinecraftChatColors = {
-        ChatColor.BLACK,      // Black
-        ChatColor.DARK_BLUE,  // Dark Blue
-        ChatColor.DARK_GREEN, // Dark Green
-        ChatColor.DARK_AQUA,  // Dark Aqua
-        ChatColor.DARK_RED,   // Dark Red
-        ChatColor.DARK_PURPLE,// Dark Purple
-        ChatColor.GOLD,       // Gold
-        ChatColor.GRAY,       // Gray
-        ChatColor.DARK_GRAY,  // Dark Gray
-        ChatColor.BLUE,       // Blue
-        ChatColor.GREEN,      // Green
-        ChatColor.AQUA,       // Aqua
-        ChatColor.RED,        // Red
-        ChatColor.LIGHT_PURPLE,// Light Purple
-        ChatColor.YELLOW,     // Yellow
-        ChatColor.WHITE       // White
-    };
-
-    private ChatColor[] specialChatColors = {
-        ChatColor.MAGIC,      // Obfuscated
-        ChatColor.BOLD,       // Bold
-        ChatColor.STRIKETHROUGH, // Strikethrough
-        ChatColor.UNDERLINE,  // Underline
-        ChatColor.ITALIC,     // Italic
-        ChatColor.RESET       // Reset
+            ChatColor.BLACK, // Black
+            ChatColor.DARK_BLUE, // Dark Blue
+            ChatColor.DARK_GREEN, // Dark Green
+            ChatColor.DARK_AQUA, // Dark Aqua
+            ChatColor.DARK_RED, // Dark Red
+            ChatColor.DARK_PURPLE, // Dark Purple
+            ChatColor.GOLD, // Gold
+            ChatColor.GRAY, // Gray
+            ChatColor.DARK_GRAY, // Dark Gray
+            ChatColor.BLUE, // Blue
+            ChatColor.GREEN, // Green
+            ChatColor.AQUA, // Aqua
+            ChatColor.RED, // Red
+            ChatColor.LIGHT_PURPLE, // Light Purple
+            ChatColor.YELLOW, // Yellow
+            ChatColor.WHITE // White
     };
 
     @Override
@@ -49,11 +40,26 @@ public class ColorChatPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     void onChatEvent(AsyncPlayerChatEvent e) {
+
         int playerNameHash = e.getPlayer().getName().hashCode();
 
         int colorIndex = Math.abs(playerNameHash % allMinecraftChatColors.length);
         ChatColor color = allMinecraftChatColors[colorIndex];
 
-        e.setMessage(color + e.getMessage());
+        e.setFormat(buildFormat(color));
+    }
+
+    String buildFormat(ChatColor color) {
+        return new StringBuilder()
+                .append(color)
+                .append(ChatColor.BOLD)
+                .append(" [ ")
+                .append("%s")
+                .append(" ] ")
+                .append(ChatColor.RESET)
+                .append(color)
+                .append("%s")
+                .toString();
+
     }
 }
