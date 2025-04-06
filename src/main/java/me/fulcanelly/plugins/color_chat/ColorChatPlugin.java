@@ -22,7 +22,7 @@ public class ColorChatPlugin extends JavaPlugin {
 
         // Register command
         saltCommand = new SaltCommand(this);
-        getCommand("salt").setExecutor(saltCommand);
+        getCommand("saltcolor").setExecutor(saltCommand);
 
         // Register listeners
         chatListener = new ChatListener(this);

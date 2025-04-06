@@ -6,7 +6,7 @@ description: Adds color to player chat messages based on their name
 author: fulcanelly
 
 commands:
-  salt:
+  saltcolor:
     description: Randomize your chat color
     usage: /<command>
     permission: colorchat.salt

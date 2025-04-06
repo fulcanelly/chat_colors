@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 import lombok.RequiredArgsConstructor;
 
 /**
- * Command executor for the /salt command
+ * Command executor for the /saltcolor command
  */
 @RequiredArgsConstructor
 public class SaltCommand implements CommandExecutor {
@@ -25,9 +25,9 @@ public class SaltCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         // Check if the player has permission
-        if (!player.hasPermission(plugin.getConfig().getString("commands.salt.permission", "colorchat.salt"))) {
+        if (!player.hasPermission(plugin.getConfig().getString("commands.saltcolor.permission", "colorchat.salt"))) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                plugin.getConfig().getString("commands.salt.no-permission", "&cYou don't have permission to use this command!")));
+                plugin.getConfig().getString("commands.saltcolor.no-permission", "&cYou don't have permission to use this command!")));
             return true;
         }
 
@@ -36,7 +36,7 @@ public class SaltCommand implements CommandExecutor {
 
         // Send a success message to the player
         player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-            plugin.getConfig().getString("commands.salt.success", "&aYour chat color has been randomized!")));
+            plugin.getConfig().getString("commands.saltcolor.success", "&aYour chat color has been randomized!")));
 
         return true;
     }

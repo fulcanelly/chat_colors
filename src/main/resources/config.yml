@@ -8,7 +8,7 @@ database:
 # Command settings
 commands:
   # Command to generate a new salt for a player
-  salt:
+  saltcolor:
     # Permission required to use the command
     permission: "colorchat.salt"
     # Message sent to the player when a new salt is generated
